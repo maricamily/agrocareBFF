@@ -6,36 +6,37 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 
 // Microservice CRUD operations
-app.get('/microservice/items', async (req, res) => {
+app.get('/microservice/vaca', async (req, res) => {
   try {
-    const response = await axios.get('http://localhost:5000/api/items');
+    const vacaId = req.query.vacaId;
+    const response = await axios.get(`http://127.0.0.1:5000/agro/v1/vaca?vacaId=${vacaId}`);
     res.json(response.data);
   } catch (error) {
     res.status(500).send(error.message);
   }
 });
 
-app.post('/microservice/items', async (req, res) => {
+app.post('/microservice/vaca', async (req, res) => {
   try {
-    const response = await axios.post('http://localhost:5000/api/items', req.body);
+    const response = await axios.post('http://127.0.0.1:5000/agro/v1/vaca', req.body);
     res.json(response.data);
   } catch (error) {
     res.status(500).send(error.message);
   }
 });
 
-app.put('/microservice/items/:id', async (req, res) => {
+app.put('/microservice/vaca/:vacaId', async (req, res) => {
   try {
-    const response = await axios.put(`http://localhost:5000/api/items/${req.params.id}`, req.body);
+    const response = await axios.put(`http://127.0.0.1:5000/agro/v1/vaca/${req.params.vacaId}`, req.body);
     res.json(response.data);
   } catch (error) {
     res.status(500).send(error.message);
   }
 });
 
-app.delete('/microservice/items/:id', async (req, res) => {
+app.delete('/microservice/vaca/:vacaId', async (req, res) => {
   try {
-    const response = await axios.delete(`http://localhost:5000/api/items/${req.params.id}`);
+    const response = await axios.delete(`http://127.0.0.1:5000/agro/v1/vaca/${req.params.vacaId}`);
     res.json(response.data);
   } catch (error) {
     res.status(500).send(error.message);
