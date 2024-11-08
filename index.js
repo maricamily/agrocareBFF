@@ -9,7 +9,7 @@ app.use(express.json());
 app.get('/microservice/vaca', async (req, res) => {
   try {
     const vacaId = req.query.vacaId;
-    const response = await axios.get(`http://127.0.0.1:5000/agro/v1/vaca?vacaId=${vacaId}`);
+    const response = await axios.get(`https://microservice-agrocare.gentledune-993b0c35.brazilsouth.azurecontainerapps.io/agro/v1/vaca?vacaId=${vacaId}`);
     res.json(response.data);
   } catch (error) {
     res.status(500).send(error.message);
@@ -18,7 +18,7 @@ app.get('/microservice/vaca', async (req, res) => {
 
 app.post('/microservice/vaca', async (req, res) => {
   try {
-    const response = await axios.post('http://127.0.0.1:5000/agro/v1/vaca', req.body);
+    const response = await axios.post('https://microservice-agrocare.gentledune-993b0c35.brazilsouth.azurecontainerapps.io/agro/v1/vaca', req.body);
     res.json(response.data);
   } catch (error) {
     res.status(500).send(error.message);
@@ -27,7 +27,7 @@ app.post('/microservice/vaca', async (req, res) => {
 
 app.put('/microservice/vaca/:vacaId', async (req, res) => {
   try {
-    const response = await axios.put(`http://127.0.0.1:5000/agro/v1/vaca/${req.params.vacaId}`, req.body);
+    const response = await axios.put(`https://microservice-agrocare.gentledune-993b0c35.brazilsouth.azurecontainerapps.io/agro/v1/vaca/${req.params.vacaId}`, req.body);
     res.json(response.data);
   } catch (error) {
     res.status(500).send(error.message);
@@ -36,7 +36,7 @@ app.put('/microservice/vaca/:vacaId', async (req, res) => {
 
 app.delete('/microservice/vaca/:vacaId', async (req, res) => {
   try {
-    const response = await axios.delete(`http://127.0.0.1:5000/agro/v1/vaca/${req.params.vacaId}`);
+    const response = await axios.delete(`https://microservice-agrocare.gentledune-993b0c35.brazilsouth.azurecontainerapps.io/agro/v1/vaca/${req.params.vacaId}`);
     res.json(response.data);
   } catch (error) {
     res.status(500).send(error.message);
