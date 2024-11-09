@@ -5,6 +5,10 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.send('Bem-vindo ao BFF do AgroCare!');
+});
+
 // Microservice CRUD operations
 app.get('/microservice/vaca', async (req, res) => {
   try {
